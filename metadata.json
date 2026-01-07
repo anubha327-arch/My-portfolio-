@@ -1,0 +1,7 @@
+{
+  "name": "Anubha Srivastava - Data Analyst Portfolio",
+  "description": "Professional portfolio of Anubha Srivastava, a Data Analyst and BCA student, featuring AI-powered bio generation and career assistance.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

@@ -1,0 +1,72 @@
+
+import React, { useState } from 'react';
+import { geminiService } from '../services/geminiService';
+
+const Hero: React.FC = () => {
+  const [keywords, setKeywords] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [aiResult, setAiResult] = useState<{ headline: string, bio: string } | null>(null);
+
+  const handleGenerate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!keywords.trim()) return;
+    setIsGenerating(true);
+    const result = await geminiService.generateBio(keywords);
+    if (result) setAiResult(result);
+    setIsGenerating(false);
+  };
+
+  return (
+    <section id="home" className="pt-32 pb-20 px-6 relative overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/10 rounded-full blur-[100px] -z-10 -translate-x-1/2"></div>
+
+      <div className="max-w-7xl mx-auto">
+        <div className="max-w-3xl">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+            Turning Raw Data into <span className="gradient-text">Clear Insights</span>.
+          </h1>
+          <p className="text-xl text-slate-400 mb-10 leading-relaxed">
+            I'm Anubha Srivastava, a Data Analyst and final year BCA student. I specialize in identifying patterns, optimizing processes, and telling stories through data.
+          </p>
+
+          <div className="glass-effect p-6 rounded-2xl mb-12">
+            <h3 className="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-4">Generate My Career Bio</h3>
+            <form onSubmit={handleGenerate} className="flex flex-col md:flex-row gap-4">
+              <input 
+                type="text" 
+                value={keywords}
+                onChange={(e) => setKeywords(e.target.value)}
+                placeholder="Enter keywords: Data Analyst, BCA, SQL, Python, Visualizer..."
+                className="flex-grow bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+              />
+              <button 
+                type="submit"
+                disabled={isGenerating}
+                className="px-8 py-3 bg-white text-slate-950 font-bold rounded-xl hover:bg-slate-200 transition-colors disabled:opacity-50"
+              >
+                {isGenerating ? 'Analyzing...' : 'Generate Bio'}
+              </button>
+            </form>
+
+            {aiResult && (
+              <div className="mt-8 space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
+                <h4 className="text-2xl font-bold text-slate-100">{aiResult.headline}</h4>
+                <p className="text-slate-400 whitespace-pre-wrap leading-relaxed">{aiResult.bio}</p>
+                <button 
+                  onClick={() => setAiResult(null)}
+                  className="text-xs text-slate-500 hover:text-slate-300 underline"
+                >
+                  Clear Result
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

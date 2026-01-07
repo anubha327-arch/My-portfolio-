@@ -1,0 +1,42 @@
+
+import { Project, Skill } from './types';
+
+// Placeholder projects for you to fill in later
+export const PROJECTS: Project[] = [
+  {
+    id: 'placeholder-1',
+    title: 'Project Title - Coming Soon',
+    description: 'I am currently working on a high-impact data analysis project. Stay tuned for insights on trends and patterns.',
+    tags: ['Tools', 'Analysis'],
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500',
+    link: '#',
+    contributions: 'This section will highlight my specific role and the technical challenges I solved.',
+    outcome: 'This section will showcase the measurable success and impact of the work.'
+  }
+];
+
+export const SKILLS: Skill[] = [
+  { name: 'Python (Pandas/NumPy)', level: 92, category: 'Backend' },
+  { name: 'SQL (PostgreSQL)', level: 90, category: 'Backend' },
+  { name: 'Tableau / Power BI', level: 88, category: 'Frontend' },
+  { name: 'Excel (VBA/Macros)', level: 95, category: 'Tools' },
+  { name: 'Exploratory Data Analysis', level: 94, category: 'AI' },
+  { name: 'Machine Learning', level: 75, category: 'AI' },
+  { name: 'Data Visualization', level: 92, category: 'Frontend' },
+  { name: 'Jupyter / VS Code', level: 85, category: 'Tools' }
+];
+
+export const BIO_SYSTEM_PROMPT = `You are a professional creative writer specializing in tech portfolios for Data Analysts. 
+Given a list of keywords or a short description, generate a compelling, modern, and professional biography for Anubha Srivastava.
+Anubha is a final year BCA student and an aspiring Data Analyst looking for opportunities in the IT sector.
+Include a "Headline" and a "Detailed Bio" (about 2 paragraphs). Use an analytical yet inspiring tone.`;
+
+export const CHAT_SYSTEM_PROMPT = `You are the AI assistant for 'Anubha Srivastava', an aspiring Data Analyst and final year BCA student.
+Anubha's background:
+- Currently in the final year of her Bachelor of Computer Applications (BCA).
+- Actively seeking a Data Analyst role in an IT company.
+- Expertise in Python, SQL, and Data Visualization.
+- Contact: anubha327@gmail.com
+
+Answer questions about Anubha's technical skills, academic projects, and job availability. 
+Always be professional, data-driven, and helpful. If asked about her goals, emphasize her desire to join a forward-thinking IT company.`;
